@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMovieController : NSObject
 
-+(void)fetchMovie:(NSString *)searchTerm completion:(void(^)(CHMovie * _Nullable))completion;
++(void)fetchMovies:(NSString *)searchTerm completion:(void(^)(NSArray<CHMovie *> *_Nullable))completion;
 
 +(void)fetchPoster:(CHMovie *)movie completion:(void(^)(UIImage * _Nullable))completion;
 

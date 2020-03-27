@@ -9,7 +9,7 @@
 import UIKit
 
 class MovieListTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var movieSearchBar: UISearchBar!
     
     
@@ -21,10 +21,11 @@ class MovieListTableViewController: UITableViewController {
         super.viewDidLoad()
         movieSearchBar.delegate = self
         tableView.rowHeight = 120
+        
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return movieResults.count
@@ -36,19 +37,22 @@ class MovieListTableViewController: UITableViewController {
         cell.movie = movie
         return cell
     }
-
+    
 }
 
 extension MovieListTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = movieSearchBar.text, !searchText.isEmpty else { return }
-        CHMovieController.fetchMovie(searchText) { (movie) in
+        CHMovieController.fetchMovies(searchText) { (movie) in
             guard let movie = movie else { return }
             DispatchQueue.main.async {
-                self.movieResults.append(movie)
+                self.movieResults = movie
                 self.tableView.reloadData()
             }
         }
+        
+        
     }
 }
+

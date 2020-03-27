@@ -18,7 +18,7 @@ static NSString * const searchKey = @"query";
 
 @implementation CHMovieController
 
-+ (void)fetchMovie:(NSString *)searchTerm completion:(void (^)(CHMovie * _Nullable))completion
++ (void)fetchMovies:(NSString *)searchTerm completion:(void (^)(NSArray<CHMovie *> *_Nullable))completion
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     
@@ -62,10 +62,14 @@ static NSString * const searchKey = @"query";
             return;
         }
         
-        NSDictionary *topLevelObject = jsonDictionary[@"results"][0];
+        NSArray<NSDictionary *> *movieDict = jsonDictionary[@"results"];
+        NSMutableArray *arrayToReturn = [[NSMutableArray alloc] init];
         
-        CHMovie *movie = [[CHMovie new] initWithDictionary:topLevelObject];
-        completion(movie);
+        for(NSDictionary *currentDict in movieDict){
+            CHMovie *movie = [[CHMovie alloc] initWithDictionary:currentDict];
+            [arrayToReturn addObject:movie];
+        }
+        completion(arrayToReturn);
         
     }] resume];
     
@@ -92,9 +96,8 @@ static NSString * const searchKey = @"query";
             return;
         }
         
-        NSData *posterData = [NSData dataWithContentsOfURL:basePosterURL];
-        UIImage *posterImage = [UIImage imageWithData:posterData];
-        UIImageView *poster = [[UIImageView alloc] initWithImage:posterImage];
+        
+        UIImage *poster = [[UIImage alloc] initWithData:data];
                            
         completion(poster);
     }] resume];
