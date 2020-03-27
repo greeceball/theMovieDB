@@ -12,6 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMovie : NSObject
 
+
+@property(nonatomic, copy, readonly)NSString *title;
+@property(nonatomic, readonly)double rating;
+@property(nonatomic, copy, readonly)NSString *shortDescription;
+@property(nonatomic, copy, readonly)NSString *posterPath;
+
+-(instancetype)initWithTitle:(NSString *)title rating:(double)rating shortDescription:(NSString *)shortDescription posterPath:(NSString *)posterPath;
+
+-(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
