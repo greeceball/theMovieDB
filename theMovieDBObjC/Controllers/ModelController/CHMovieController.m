@@ -72,9 +72,11 @@ static NSString * const searchKey = @"query";
 
 + (void)fetchPoster:(CHMovie *)movie completion:(void (^)(UIImage * _Nullable))completion
 {
-    NSURL *posterPathURL = [NSURL URLWithString:movie.posterPath];
+    NSURL *basePosterURL = [NSURL URLWithString:basePosterURLString];
+    basePosterURL = [basePosterURL URLByAppendingPathComponent:movie.posterPath];
+    //NSURL *posterPathURL = [NSURL URLWithString:movie.posterPath];
     
-    [[[NSURLSession sharedSession] dataTaskWithURL:posterPathURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[[NSURLSession sharedSession] dataTaskWithURL:basePosterURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (error) {
             NSLog(@"%@", error);
@@ -89,7 +91,7 @@ static NSString * const searchKey = @"query";
             return;
         }
         
-        NSData *posterData = [NSData dataWithContentsOfURL:posterPathURL];
+        NSData *posterData = [NSData dataWithContentsOfURL:basePosterURL];
         UIImage *posterImage = [UIImage imageWithData:posterData];
         UIImageView *poster = [[UIImageView alloc] initWithImage:posterImage];
                            
