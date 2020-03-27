@@ -22,21 +22,22 @@ static NSString * const searchKey = @"query";
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     
-    baseURL = [baseURL URLByAppendingPathComponent:apiKey];
-    //baseURL = [baseURL URLByAppendingPathComponent:apiValue];
-    //baseURL = [baseURL URLByAppendingPathComponent:searchKey];
-    //baseURL = [baseURL URLByAppendingPathComponent:searchTerm.lowercaseString];
+//    baseURL = [baseURL URLByAppendingPathComponent:apiKey];
+//    baseURL = [baseURL URLByAppendingPathComponent:apiValue];
+//    baseURL = [baseURL URLByAppendingPathComponent:searchKey];
+//    baseURL = [baseURL URLByAppendingPathComponent:searchTerm.lowercaseString];
     
     NSURLComponents *urlComponents = [[NSURLComponents new] initWithURL:baseURL resolvingAgainstBaseURL:true];
     
-    urlComponents.queryItems = @[[NSURLQueryItem queryItemWithName:@"strictMatch" value:@"false"]];
+   urlComponents.queryItems = @[[NSURLQueryItem queryItemWithName:apiKey value:apiValue], [NSURLQueryItem queryItemWithName:searchKey value:searchTerm]];
+    
     
     NSURL *finalURL = [urlComponents URL];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:finalURL];
-    
-    [request addValue:apiValue forHTTPHeaderField:@"api_key"];
-    [request addValue:searchKey forHTTPHeaderField:searchTerm];
+//    
+//    [request addValue:apiValue forHTTPHeaderField:@"api_key"];
+//    [request addValue:searchKey forHTTPHeaderField:searchTerm];
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
