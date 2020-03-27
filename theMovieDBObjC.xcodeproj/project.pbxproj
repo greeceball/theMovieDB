@@ -14,6 +14,7 @@
 		3471C505242E50FE00A8DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3471C504242E50FE00A8DDE0 /* Assets.xcassets */; };
 		3471C508242E50FE00A8DDE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3471C506242E50FE00A8DDE0 /* LaunchScreen.storyboard */; };
 		3471C518242E517A00A8DDE0 /* CHMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3471C517242E517A00A8DDE0 /* CHMovie.m */; };
+		34AD9B4F242E5A260056413E /* CHMovieController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AD9B4E242E5A260056413E /* CHMovieController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		3471C515242E517900A8DDE0 /* theMovieDBObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theMovieDBObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 		3471C516242E517A00A8DDE0 /* CHMovie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHMovie.h; sourceTree = "<group>"; };
 		3471C517242E517A00A8DDE0 /* CHMovie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHMovie.m; sourceTree = "<group>"; };
+		34AD9B4D242E5A260056413E /* CHMovieController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHMovieController.h; sourceTree = "<group>"; };
+		34AD9B4E242E5A260056413E /* CHMovieController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHMovieController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 		3471C513242E513D00A8DDE0 /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
+				34AD9B4D242E5A260056413E /* CHMovieController.h */,
+				34AD9B4E242E5A260056413E /* CHMovieController.m */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34AD9B4F242E5A260056413E /* CHMovieController.m in Sources */,
 				3471C500242E50FC00A8DDE0 /* ViewController.swift in Sources */,
 				3471C4FC242E50FC00A8DDE0 /* AppDelegate.swift in Sources */,
 				3471C4FE242E50FC00A8DDE0 /* SceneDelegate.swift in Sources */,
