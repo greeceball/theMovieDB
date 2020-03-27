@@ -14,7 +14,6 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieSummaryLabel: UILabel!
     
-    
     var movie:CHMovie? {
         didSet {
             guard let movie = movie else { return }

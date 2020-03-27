@@ -15,29 +15,19 @@ static NSString * const apiKey = @"api_key";
 static NSString * const apiValue = @"fca5a8c85d8154a8d7591cf4881ab8d1";
 static NSString * const searchKey = @"query";
 
-
 @implementation CHMovieController
 
 + (void)fetchMovies:(NSString *)searchTerm completion:(void (^)(NSArray<CHMovie *> *_Nullable))completion
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
     
-//    baseURL = [baseURL URLByAppendingPathComponent:apiKey];
-//    baseURL = [baseURL URLByAppendingPathComponent:apiValue];
-//    baseURL = [baseURL URLByAppendingPathComponent:searchKey];
-//    baseURL = [baseURL URLByAppendingPathComponent:searchTerm.lowercaseString];
-    
     NSURLComponents *urlComponents = [[NSURLComponents new] initWithURL:baseURL resolvingAgainstBaseURL:true];
     
-   urlComponents.queryItems = @[[NSURLQueryItem queryItemWithName:apiKey value:apiValue], [NSURLQueryItem queryItemWithName:searchKey value:searchTerm]];
-    
+    urlComponents.queryItems = @[[NSURLQueryItem queryItemWithName:apiKey value:apiValue], [NSURLQueryItem queryItemWithName:searchKey value:searchTerm]];
     
     NSURL *finalURL = [urlComponents URL];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:finalURL];
-//    
-//    [request addValue:apiValue forHTTPHeaderField:@"api_key"];
-//    [request addValue:searchKey forHTTPHeaderField:searchTerm];
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
@@ -70,16 +60,13 @@ static NSString * const searchKey = @"query";
             [arrayToReturn addObject:movie];
         }
         completion(arrayToReturn);
-        
     }] resume];
-    
 }
 
 + (void)fetchPoster:(CHMovie *)movie completion:(void (^)(UIImage * _Nullable))completion
 {
     NSURL *basePosterURL = [NSURL URLWithString:basePosterURLString];
     basePosterURL = [basePosterURL URLByAppendingPathComponent:movie.posterPath];
-    //NSURL *posterPathURL = [NSURL URLWithString:movie.posterPath];
     
     [[[NSURLSession sharedSession] dataTaskWithURL:basePosterURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
@@ -96,9 +83,8 @@ static NSString * const searchKey = @"query";
             return;
         }
         
-        
         UIImage *poster = [[UIImage alloc] initWithData:data];
-                           
+        
         completion(poster);
     }] resume];
 }

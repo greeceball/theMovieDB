@@ -12,7 +12,6 @@ class MovieListTableViewController: UITableViewController {
     
     @IBOutlet weak var movieSearchBar: UISearchBar!
     
-    
     //MARK: - Properties
     var movieResults: [CHMovie] = []
     
@@ -21,7 +20,6 @@ class MovieListTableViewController: UITableViewController {
         super.viewDidLoad()
         movieSearchBar.delegate = self
         tableView.rowHeight = 120
-        
     }
     
     // MARK: - Table view data source
@@ -37,7 +35,6 @@ class MovieListTableViewController: UITableViewController {
         cell.movie = movie
         return cell
     }
-    
 }
 
 extension MovieListTableViewController: UISearchBarDelegate {
@@ -51,8 +48,6 @@ extension MovieListTableViewController: UISearchBarDelegate {
                 self.tableView.reloadData()
             }
         }
-        
-        
     }
 }
 
