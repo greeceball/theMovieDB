@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly)NSString *title;
 @property(nonatomic, readonly)double rating;
 @property(nonatomic, copy, readonly)NSString *shortDescription;
-@property(nonatomic, copy, readonly)NSString *posterPath;
+@property(nonatomic, copy, nullable)NSString *posterPath;
 
 -(instancetype)initWithTitle:(NSString *)title rating:(double)rating shortDescription:(NSString *)shortDescription posterPath:(NSString *)posterPath;
 

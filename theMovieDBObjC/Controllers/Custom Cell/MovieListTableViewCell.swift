@@ -12,7 +12,7 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var moviePosterImage: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
-    @IBOutlet weak var movieSummaryLabel: UITextView!
+    @IBOutlet weak var movieSummaryLabel: UILabel!
     
     
     var movie:CHMovie? {
@@ -21,13 +21,19 @@ class MovieListTableViewCell: UITableViewCell {
             movieTitleLabel.text = movie.title
             movieRatingLabel.text = "Rating: \(String(movie.rating))"
             movieSummaryLabel.text = movie.shortDescription
-            
-            CHMovieController.fetchPoster(movie) { (poster) in
-                guard let poster = poster else { return }
-                DispatchQueue.main.async {
-                    self.moviePosterImage.image = poster
-                }
-            }
+
+// Working on getting poster to populate. it doesnt handle movies without posters
+//            if postertemp == "" {
+//                self.moviePosterImage.image = #imageLiteral(resourceName: "no poster")
+//                return
+//            } else {
+//                CHMovieController.fetchPoster(movie) { (poster) in
+//                    guard let poster = poster else { return }
+//                    DispatchQueue.main.async {
+//                        self.moviePosterImage.image = poster
+//                    }
+//                }
+//            }
         }
     }
 }
